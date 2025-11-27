@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoyWork Feed – Văn hoá doanh nghiệp thật</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* JoyWork Brand Colors - Mã màu nhận diện chính thức */
+            --primary: #295892;          /* Xanh dương chủ đạo RGB(41, 88, 146) */
+            --primary-dark: #1e4270;     /* Xanh đậm hơn */
+            --primary-light: #e8eef5;    /* Xanh nhạt background */
+            --primary-lighter: #f0f5fa;  /* Xanh rất nhạt */
+            --accent: #BC2153;           /* Hồng/Magenta RGB(188, 33, 83) */
+            --accent-light: #fce8ef;     /* Hồng nhạt background */
+            --accent-dark: #9a1a44;      /* Hồng đậm */
+            --neutral: #414B53;          /* Xám đậm RGB(65, 75, 83) */
+            --text-primary: #1a1a2e;     /* Text chính */
+            --text-secondary: #414B53;   /* Text phụ - dùng neutral */
+            --text-muted: #7a8490;       /* Text mờ */
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fb;
+            --bg-gray: #f0f2f5;
+            --border-light: #e2e6eb;
+            --border-medium: #ccd2d9;
+            --shadow-sm: 0 1px 2px rgba(41,88,146,0.06);
+            --shadow-md: 0 4px 6px -1px rgba(41,88,146,0.1), 0 2px 4px -1px rgba(41,88,146,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(41,88,146,0.1), 0 4px 6px -2px rgba(41,88,146,0.05);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ==================== HEADER ==================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .header.hidden {
+            transform: translateY(-100%);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .logo-icon::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .search-box {
+            position: relative;
+            width: 320px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 16px 10px 44px;
+            border: 1px solid var(--border-light);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            background: var(--bg-gray);
+            transition: all 0.2s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: var(--bg-gray);
+            color: var(--text-primary);
+        }
+
+        .nav-link.active {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        /* ==================== FILTER BAR ==================== */
+        .filter-bar {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid var(--border-light);
+            padding: 12px 24px;
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+
+        .filter-bar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .filter-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .filter-inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-select {
+            padding: 8px 32px 8px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
+            cursor: pointer;
+            min-width: 140px;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .filter-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            background: white;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .filter-toggle input {
+            accent-color: var(--primary);
+        }
+
+        .hashtag-filters {
+            display: flex;
+            gap: 8px;
+            margin-left: auto;
+        }
+
+        .hashtag-pill {
+            padding: 6px 14px;
+            background: var(--bg-gray);
+            border: none;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .hashtag-pill:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .hashtag-pill.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ==================== MAIN LAYOUT ==================== */
+        .main-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        /* ==================== FEED CONTAINER ==================== */
+        .feed-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 24px;
+            max-width: 900px;
+        }
+
+        .feed-scroll {
+            width: 100%;
+            max-width: 480px;
+            height: calc(100vh - 168px);
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scrollbar-width: none;
+        }
+
+        .feed-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ==================== POST CARD ==================== */
+        .post-card {
+            scroll-snap-align: start;
+            height: calc(100vh - 200px);
+            min-height: 600px;
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .post-media {
+            position: relative;
+            flex: 1;
+            min-height: 0;
+            background: #1a1a1a;
+            overflow: hidden;
+        }
+
+        .post-media video,
+        .post-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-media .placeholder-media {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: white;
+        }
+
+        .placeholder-media .play-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .placeholder-media .play-icon svg {
+            margin-left: 4px;
+        }
+
+        .placeholder-media p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Sound toggle */
+        .sound-toggle {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            transition: all 0.2s;
+        }
+
+        .sound-toggle:hover {
+            background: rgba(0,0,0,0.7);
+            transform: scale(1.05);
+        }
+
+        /* ==================== POST OVERLAY ==================== */
+        .post-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 80px 16px 16px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+        }
+
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .company-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9rem;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .company-name {
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .verified-badge {
+            width: 18px;
+            height: 18px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .post-caption {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .post-hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .post-hashtag {
+            font-size: 0.8rem;
+            color: #a8c5e8;
+            font-weight: 500;
+        }
+
+        .post-hashtag:hover {
+            color: white;
+        }
+
+        /* ==================== ACTION BAR ==================== */
+        .action-bar {
+            position: absolute;
+            right: 12px;
+            bottom: 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .action-btn .icon-wrap {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover .icon-wrap {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .action-btn.liked .icon-wrap {
+            background: var(--accent);
+        }
+
+        .action-btn.saved .icon-wrap {
+            background: var(--primary);
+        }
+
+        .action-btn span {
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .action-btn.jobs-btn .icon-wrap {
+            background: var(--primary);
+        }
+
+        /* ==================== TRUST LAYER ==================== */
+        .trust-layer {
+            padding: 12px 16px;
+            background: var(--bg-white);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--primary-light);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            border: 1px solid rgba(41,88,146,0.1);
+        }
+
+        .trust-badge .check-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .trust-badge .check-icon svg {
+            color: white;
+        }
+
+        .trust-text {
+            flex: 1;
+        }
+
+        .trust-text strong {
+            color: var(--primary);
+        }
+
+        .trust-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* ==================== COMPANY SNAPSHOT PANEL ==================== */
+        .snapshot-panel {
+            width: 380px;
+            padding: 24px;
+            position: sticky;
+            top: 144px;
+            height: fit-content;
+            max-height: calc(100vh - 168px);
+            overflow-y: auto;
+        }
+
+        .snapshot-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .snapshot-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .snapshot-company {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .snapshot-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .snapshot-company-info h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .snapshot-company-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .snapshot-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .culture-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: var(--bg-gray);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .culture-badge.verified {
+            background: var(--primary-light);
+            color: var(--primary);
+            border: 1px solid rgba(41,88,146,0.2);
+        }
+
+        .snapshot-body {
+            padding: 20px 24px;
+        }
+
+        .snapshot-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .snapshot-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            padding: 12px;
+            background: var(--bg-gray);
+            border-radius: var(--radius-sm);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .snapshot-recent {
+            margin-bottom: 20px;
+        }
+
+        .snapshot-recent h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .recent-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .recent-thumb {
+            aspect-ratio: 9/16;
+            background: var(--bg-gray);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .recent-thumb:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        .recent-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .snapshot-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0 24px 24px;
+        }
+
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: white;
+            color: var(--text-primary);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-gray);
+            border-color: var(--text-muted);
+        }
+
+        /* ==================== LOADING STATE ==================== */
+        .skeleton {
+            background: linear-gradient(90deg, var(--bg-gray) 25%, var(--bg-light) 50%, var(--bg-gray) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: var(--radius-sm);
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .skeleton-post {
+            height: calc(100vh - 200px);
+            min-height: 600px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 24px;
+        }
+
+        /* ==================== EMPTY STATE ==================== */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 200px);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .empty-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .empty-state h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .empty-state p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .empty-suggestions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* ==================== MOBILE STYLES ==================== */
+        @media (max-width: 1024px) {
+            .snapshot-panel {
+                display: none;
+            }
+
+            .feed-container {
+                max-width: 100%;
+                padding: 16px;
+            }
+
+            .feed-scroll {
+                max-width: 520px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 0 16px;
+            }
+
+            .search-box {
+                display: none;
+            }
+
+            .nav-menu {
+                gap: 4px;
+            }
+
+            .nav-link {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+
+            .filter-bar {
+                padding: 10px 16px;
+            }
+
+            .filter-select {
+                min-width: 120px;
+                font-size: 0.8rem;
+            }
+
+            .main-container {
+                padding-top: 110px;
+            }
+
+            .feed-container {
+                padding: 12px;
+            }
+
+            .feed-scroll {
+                max-width: 100%;
+                height: calc(100vh - 134px);
+            }
+
+            .post-card {
+                height: calc(100vh - 160px);
+                min-height: 500px;
+                border-radius: var(--radius-md);
+                margin-bottom: 16px;
+            }
+
+            .action-bar {
+                right: 8px;
+                bottom: 100px;
+                gap: 12px;
+            }
+
+            .action-btn .icon-wrap {
+                width: 40px;
+                height: 40px;
+            }
+
+            .trust-layer {
+                padding: 10px 12px;
+            }
+
+            .trust-badge {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* ==================== MOBILE BOTTOM SHEET ==================== */
+        .bottom-sheet-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .bottom-sheet-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .bottom-sheet {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            max-height: 85vh;
+            overflow-y: auto;
+            z-index: 2001;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .bottom-sheet.active {
+            transform: translateY(0);
+        }
+
+        .bottom-sheet-handle {
+            width: 40px;
+            height: 4px;
+            background: var(--border-medium);
+            border-radius: 2px;
+            margin: 12px auto;
+        }
+
+        .bottom-sheet-content {
+            padding: 0 20px 24px;
+        }
+
+        /* ==================== SCROLL INDICATOR ==================== */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            animation: bounce 2s infinite;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-indicator.visible {
+            opacity: 1;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-8px); }
+            60% { transform: translateX(-50%) translateY(-4px); }
+        }
+
+        /* ==================== PROGRESS BAR ==================== */
+        .progress-dots {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-medium);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .progress-dot.active {
+            background: var(--accent);
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 768px) {
+            .progress-dots {
+                right: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="50" r="35" stroke="white" stroke-width="8" fill="none"/>
+                        <circle cx="50" cy="50" r="6" fill="#BC2153"/>
+                    </svg>
+                </div>
+                <span style="color: #295892;">JOY</span><span style="color: #414B53;">Work</span>
+            </a>
+            
+            <div class="search-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" placeholder="Tìm công ty, ngành nghề, #hashtag...">
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active">Feed</a>
+                <a href="#" class="nav-link">Jobs</a>
+                <a href="#" class="nav-link">Doanh nghiệp</a>
+                <a href="#" class="nav-link">Giới thiệu</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar" id="filterBar">
+        <div class="filter-inner">
+            <select class="filter-select">
+                <option value="">Tất cả ngành</option>
+                <option value="tech">Công nghệ</option>
+                <option value="finance">Tài chính</option>
+                <option value="education">Giáo dục</option>
+                <option value="healthcare">Y tế</option>
+                <option value="retail">Bán lẻ</option>
+            </select>
+            
+            <select class="filter-select">
+                <option value="">Tất cả địa điểm</option>
+                <option value="hanoi">Hà Nội</option>
+                <option value="hcm">TP. Hồ Chí Minh</option>
+                <option value="danang">Đà Nẵng</option>
+            </select>
+            
+            <label class="filter-toggle">
+                <input type="checkbox" checked>
+                <span>Chỉ DN đã xác thực</span>
+            </label>
+            
+            <div class="hashtag-filters">
+                <button class="hashtag-pill active">#MinhBach</button>
+                <button class="hashtag-pill">#Teamwork</button>
+                <button class="hashtag-pill">#FeedbackThang</button>
+                <button class="hashtag-pill">#KhongDocHai</button>
+                <button class="hashtag-pill">#HocHoi</button>
+                <button class="hashtag-pill">#CanBang</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <main class="main-container">
+        <!-- FEED -->
+        <div class="feed-container">
+            <div class="feed-scroll" id="feedScroll">
+                
+                <!-- POST 1 -->
+                <article class="post-card" data-company="stv">
+                    <div class="post-media">
+                        <div class="placeholder-media">
+                            <div class="play-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                            </div>
+                            <p>Daily standup meeting</p>
+                        </div>
+                        <button class="sound-toggle" title="Bật/tắt âm thanh">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                                <line x1="23" y1="9" x2="17" y2="15"/>
+                                <line x1="17" y1="9" x2="23" y2="15"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- OVERLAY -->
+                        <div class="post-overlay">
+                            <div class="company-info">
+                                <div class="company-avatar">STV</div>
+                                <div class="company-name">
+                                    Sáng Tạo Việt
+                                    <span class="verified-badge">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                            <polyline points="20 6 9 17 4 12"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="post-caption">Daily 15 phút, ai cũng được nói. Leader chỉ hỏi: "Vậy mục tiêu chung là gì?" – Đây là cách chúng tôi bắt đầu ngày mới.</p>
+                            <div class="post-hashtags">
+                                <span class="post-hashtag">#MinhBach</span>
+                                <span class="post-hashtag">#Teamwork</span>
+                                <span class="post-hashtag">#FeedbackThang</span>
+                            </div>
+                        </div>
+                        
+                        <!-- ACTION BAR -->
+                        <div class="action-bar">
+                            <button class="action-btn" onclick="toggleLike(this)">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                </div>
+                                <span>2.4k</span>
+                            </button>
+                            <button class="action-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                    </svg>
+                                </div>
+                                <span>Hỏi NV</span>
+                            </button>
+                            <button class="action-btn" onclick="toggleSave(this)">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                                    </svg>
+                                </div>
+                                <span>Lưu</span>
+                            </button>
+                            <button class="action-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="18" cy="5" r="3"/>
+                                        <circle cx="6" cy="12" r="3"/>
+                                        <circle cx="18" cy="19" r="3"/>
+                                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                                    </svg>
+                                </div>
+                                <span>Chia sẻ</span>
+                            </button>
+                            <button class="action-btn jobs-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                    </svg>
+                                </div>
+                                <span>5 Jobs</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- TRUST LAYER -->
+                    <div class="trust-layer">
+                        <div class="trust-badge">
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <div class="trust-text">
+                                <strong>87%</strong> nhân viên xác nhận: Văn hoá feedback thẳng thắn
+                                <div class="trust-meta">156 người · Cập nhật 3 ngày trước</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- POST 2 -->
+                <article class="post-card" data-company="techvn">
+                    <div class="post-media">
+                        <div class="placeholder-media" style="background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);">
+                            <div class="play-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                            </div>
+                            <p>Onboarding buddy session</p>
+                        </div>
+                        <button class="sound-toggle" title="Bật/tắt âm thanh">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                                <line x1="23" y1="9" x2="17" y2="15"/>
+                                <line x1="17" y1="9" x2="23" y2="15"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="post-overlay">
+                            <div class="company-info">
+                                <div class="company-avatar" style="background: #295892; color: white;">TV</div>
+                                <div class="company-name">
+                                    TechVN Solutions
+                                    <span class="verified-badge">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                            <polyline points="20 6 9 17 4 12"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="post-caption">Ngày đầu đi làm, bạn không một mình. Buddy sẽ cùng bạn ăn trưa, giải thích quy trình, và trả lời mọi câu hỏi "ngớ ngẩn" nhất.</p>
+                            <div class="post-hashtags">
+                                <span class="post-hashtag">#Onboarding</span>
+                                <span class="post-hashtag">#HocHoi</span>
+                                <span class="post-hashtag">#Teamwork</span>
+                            </div>
+                        </div>
+                        
+                        <div class="action-bar">
+                            <button class="action-btn" onclick="toggleLike(this)">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                </div>
+                                <span>1.8k</span>
+                            </button>
+                            <button class="action-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                    </svg>
+                                </div>
+                                <span>Hỏi NV</span>
+                            </button>
+                            <button class="action-btn" onclick="toggleSave(this)">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                                    </svg>
+                                </div>
+                                <span>Lưu</span>
+                            </button>
+                            <button class="action-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="18" cy="5" r="3"/>
+                                        <circle cx="6" cy="12" r="3"/>
+                                        <circle cx="18" cy="19" r="3"/>
+                                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                                    </svg>
+                                </div>
+                                <span>Chia sẻ</span>
+                            </button>
+                            <button class="action-btn jobs-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                    </svg>
+                                </div>
+                                <span>3 Jobs</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="trust-layer">
+                        <div class="trust-badge">
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <div class="trust-text">
+                                <strong>92%</strong> nhân viên xác nhận: Hỗ trợ người mới tận tâm
+                                <div class="trust-meta">89 người · Cập nhật 1 tuần trước</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- POST 3 -->
+                <article class="post-card" data-company="greenlife">
+                    <div class="post-media">
+                        <div class="placeholder-media" style="background: linear-gradient(135deg, #065f46 0%, #064e3b 100%);">
+                            <div class="play-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                            </div>
+                            <p>Team lunch Friday</p>
+                        </div>
+                        <button class="sound-toggle" title="Bật/tắt âm thanh">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                                <line x1="23" y1="9" x2="17" y2="15"/>
+                                <line x1="17" y1="9" x2="23" y2="15"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="post-overlay">
+                            <div class="company-info">
+                                <div class="company-avatar" style="background: #295892; color: white;">GL</div>
+                                <div class="company-name">
+                                    GreenLife Corp
+                                    <span class="verified-badge">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                            <polyline points="20 6 9 17 4 12"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="post-caption">Thứ 6 hàng tuần, cả team cùng ăn trưa. Không laptop, không điện thoại – chỉ có tiếng cười và những câu chuyện ngoài công việc.</p>
+                            <div class="post-hashtags">
+                                <span class="post-hashtag">#CanBang</span>
+                                <span class="post-hashtag">#Teamwork</span>
+                                <span class="post-hashtag">#KhongDocHai</span>
+                            </div>
+                        </div>
+                        
+                        <div class="action-bar">
+                            <button class="action-btn liked" onclick="toggleLike(this)">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                </div>
+                                <span>3.2k</span>
+                            </button>
+                            <button class="action-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                    </svg>
+                                </div>
+                                <span>Hỏi NV</span>
+                            </button>
+                            <button class="action-btn saved" onclick="toggleSave(this)">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2">
+                                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                                    </svg>
+                                </div>
+                                <span>Đã lưu</span>
+                            </button>
+                            <button class="action-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="18" cy="5" r="3"/>
+                                        <circle cx="6" cy="12" r="3"/>
+                                        <circle cx="18" cy="19" r="3"/>
+                                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                                    </svg>
+                                </div>
+                                <span>Chia sẻ</span>
+                            </button>
+                            <button class="action-btn jobs-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                    </svg>
+                                </div>
+                                <span>8 Jobs</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="trust-layer">
+                        <div class="trust-badge">
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <div class="trust-text">
+                                <strong>95%</strong> nhân viên xác nhận: Work-life balance thực sự
+                                <div class="trust-meta">234 người · Cập nhật 2 ngày trước</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- POST 4 -->
+                <article class="post-card" data-company="edutech">
+                    <div class="post-media">
+                        <div class="placeholder-media" style="background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);">
+                            <div class="play-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                            </div>
+                            <p>Knowledge sharing session</p>
+                        </div>
+                        <button class="sound-toggle" title="Bật/tắt âm thanh">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                                <line x1="23" y1="9" x2="17" y2="15"/>
+                                <line x1="17" y1="9" x2="23" y2="15"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="post-overlay">
+                            <div class="company-info">
+                                <div class="company-avatar" style="background: #295892; color: white;">ET</div>
+                                <div class="company-name">
+                                    EduTech Vietnam
+                                    <span class="verified-badge">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                            <polyline points="20 6 9 17 4 12"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="post-caption">Mỗi thứ 4: Tech Talk nội bộ. Ai cũng có thể đăng ký chia sẻ – từ junior đến CEO. Hôm nay: "Làm sao để debug mà không stress?"</p>
+                            <div class="post-hashtags">
+                                <span class="post-hashtag">#HocHoi</span>
+                                <span class="post-hashtag">#MinhBach</span>
+                                <span class="post-hashtag">#GrowthMindset</span>
+                            </div>
+                        </div>
+                        
+                        <div class="action-bar">
+                            <button class="action-btn" onclick="toggleLike(this)">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                </div>
+                                <span>1.5k</span>
+                            </button>
+                            <button class="action-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                    </svg>
+                                </div>
+                                <span>Hỏi NV</span>
+                            </button>
+                            <button class="action-btn" onclick="toggleSave(this)">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                                    </svg>
+                                </div>
+                                <span>Lưu</span>
+                            </button>
+                            <button class="action-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="18" cy="5" r="3"/>
+                                        <circle cx="6" cy="12" r="3"/>
+                                        <circle cx="18" cy="19" r="3"/>
+                                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                                    </svg>
+                                </div>
+                                <span>Chia sẻ</span>
+                            </button>
+                            <button class="action-btn jobs-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                    </svg>
+                                </div>
+                                <span>4 Jobs</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="trust-layer">
+                        <div class="trust-badge">
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <div class="trust-text">
+                                <strong>89%</strong> nhân viên xác nhận: Được đầu tư phát triển
+                                <div class="trust-meta">178 người · Cập nhật 5 ngày trước</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- POST 5 -->
+                <article class="post-card" data-company="finpro">
+                    <div class="post-media">
+                        <div class="placeholder-media" style="background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);">
+                            <div class="play-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                            </div>
+                            <p>1:1 feedback session</p>
+                        </div>
+                        <button class="sound-toggle" title="Bật/tắt âm thanh">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                                <line x1="23" y1="9" x2="17" y2="15"/>
+                                <line x1="17" y1="9" x2="23" y2="15"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="post-overlay">
+                            <div class="company-info">
+                                <div class="company-avatar" style="background: #295892; color: white;">FP</div>
+                                <div class="company-name">
+                                    FinPro Vietnam
+                                    <span class="verified-badge">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                            <polyline points="20 6 9 17 4 12"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="post-caption">1:1 hàng tuần với manager – 30 phút cho bạn: nói về khó khăn, đề xuất ý tưởng, hay chỉ cần xả stress. Không có agenda cứng nhắc.</p>
+                            <div class="post-hashtags">
+                                <span class="post-hashtag">#FeedbackThang</span>
+                                <span class="post-hashtag">#MinhBach</span>
+                                <span class="post-hashtag">#Leadership</span>
+                            </div>
+                        </div>
+                        
+                        <div class="action-bar">
+                            <button class="action-btn" onclick="toggleLike(this)">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                </div>
+                                <span>2.1k</span>
+                            </button>
+                            <button class="action-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                    </svg>
+                                </div>
+                                <span>Hỏi NV</span>
+                            </button>
+                            <button class="action-btn" onclick="toggleSave(this)">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                                    </svg>
+                                </div>
+                                <span>Lưu</span>
+                            </button>
+                            <button class="action-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="18" cy="5" r="3"/>
+                                        <circle cx="6" cy="12" r="3"/>
+                                        <circle cx="18" cy="19" r="3"/>
+                                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                                    </svg>
+                                </div>
+                                <span>Chia sẻ</span>
+                            </button>
+                            <button class="action-btn jobs-btn">
+                                <div class="icon-wrap">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                    </svg>
+                                </div>
+                                <span>6 Jobs</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="trust-layer">
+                        <div class="trust-badge">
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <div class="trust-text">
+                                <strong>91%</strong> nhân viên xác nhận: Manager luôn lắng nghe
+                                <div class="trust-meta">145 người · Cập nhật 4 ngày trước</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+            </div>
+        </div>
+
+        <!-- COMPANY SNAPSHOT PANEL (DESKTOP) -->
+        <aside class="snapshot-panel" id="snapshotPanel">
+            <div class="snapshot-card">
+                <div class="snapshot-header">
+                    <div class="snapshot-company">
+                        <div class="snapshot-logo" id="snapshotLogo">STV</div>
+                        <div class="snapshot-company-info">
+                            <h3 id="snapshotName">
+                                Sáng Tạo Việt
+                                <span class="verified-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </span>
+                            </h3>
+                            <p id="snapshotMeta">Công nghệ · TP. Hồ Chí Minh</p>
+                        </div>
+                    </div>
+                    <div class="snapshot-badges" id="snapshotBadges">
+                        <span class="culture-badge verified">✓ Minh bạch</span>
+                        <span class="culture-badge verified">✓ Feedback thẳng</span>
+                        <span class="culture-badge">🎯 Tự chủ</span>
+                        <span class="culture-badge">📚 Học hỏi</span>
+                        <span class="culture-badge">⚖️ Cân bằng</span>
+                    </div>
+                </div>
+                
+                <div class="snapshot-body">
+                    <p class="snapshot-desc" id="snapshotDesc">
+                        Với hơn 200 nhân viên tâm huyết, chúng tôi đang phục vụ hơn 5,000 doanh nghiệp trên toàn quốc, giúp họ chuyển đổi số và phát triển bền vững.
+                    </p>
+                    
+                    <div class="snapshot-stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="statVerified">87%</div>
+                            <div class="stat-label">Xác thực tổng</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="statTurnover">8%</div>
+                            <div class="stat-label">Nghỉ việc/năm</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="stateNPS">+62</div>
+                            <div class="stat-label">eNPS Score</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="statSatisfy">4.5/5</div>
+                            <div class="stat-label">Hài lòng</div>
+                        </div>
+                    </div>
+                    
+                    <div class="snapshot-recent">
+                        <h4>Khoảnh khắc gần đây</h4>
+                        <div class="recent-grid">
+                            <div class="recent-thumb" style="background: linear-gradient(135deg, #374151, #1f2937);"></div>
+                            <div class="recent-thumb" style="background: linear-gradient(135deg, #4b5563, #374151);"></div>
+                            <div class="recent-thumb" style="background: linear-gradient(135deg, #6b7280, #4b5563);"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="snapshot-actions">
+                    <button class="btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                        Xem profile đầy đủ
+                    </button>
+                    <button class="btn-secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                        Xem 5 vị trí đang tuyển
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- PROGRESS DOTS -->
+    <div class="progress-dots" id="progressDots">
+        <div class="progress-dot active" data-index="0"></div>
+        <div class="progress-dot" data-index="1"></div>
+        <div class="progress-dot" data-index="2"></div>
+        <div class="progress-dot" data-index="3"></div>
+        <div class="progress-dot" data-index="4"></div>
+    </div>
+
+    <!-- SCROLL INDICATOR -->
+    <div class="scroll-indicator visible" id="scrollIndicator">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M19 12l-7 7-7-7"/>
+        </svg>
+        <span>Lướt để khám phá</span>
+    </div>
+
+    <!-- MOBILE BOTTOM SHEET -->
+    <div class="bottom-sheet-overlay" id="bottomSheetOverlay"></div>
+    <div class="bottom-sheet" id="bottomSheet">
+        <div class="bottom-sheet-handle"></div>
+        <div class="bottom-sheet-content">
+            <!-- Content will be dynamically inserted -->
+        </div>
+    </div>
+
+    <script>
+        // ==================== DATA ====================
+        const companyData = {
+            stv: {
+                name: 'Sáng Tạo Việt',
+                short: 'STV',
+                color: '#295892',
+                industry: 'Công nghệ',
+                location: 'TP. Hồ Chí Minh',
+                badges: ['✓ Minh bạch', '✓ Feedback thẳng', '🎯 Tự chủ', '📚 Học hỏi', '⚖️ Cân bằng'],
+                verifiedBadges: [0, 1],
+                desc: 'Với hơn 200 nhân viên tâm huyết, chúng tôi đang phục vụ hơn 5,000 doanh nghiệp trên toàn quốc, giúp họ chuyển đổi số và phát triển bền vững.',
+                stats: { verified: '87%', turnover: '8%', enps: '+62', satisfy: '4.5/5' },
+                jobs: 5
+            },
+            techvn: {
+                name: 'TechVN Solutions',
+                short: 'TV',
+                color: '#295892',
+                industry: 'Công nghệ',
+                location: 'Hà Nội',
+                badges: ['✓ Hỗ trợ người mới', '✓ Onboarding tốt', '🚀 Growth', '🤝 Teamwork'],
+                verifiedBadges: [0, 1],
+                desc: 'TechVN Solutions là startup công nghệ với sứ mệnh giúp doanh nghiệp Việt số hóa quy trình. Đội ngũ trẻ, năng động, luôn hỗ trợ nhau.',
+                stats: { verified: '92%', turnover: '5%', enps: '+71', satisfy: '4.7/5' },
+                jobs: 3
+            },
+            greenlife: {
+                name: 'GreenLife Corp',
+                short: 'GL',
+                color: '#295892',
+                industry: 'Thực phẩm & Đồ uống',
+                location: 'TP. Hồ Chí Minh',
+                badges: ['✓ Work-life balance', '✓ Không toxic', '🌿 Healthy', '👨‍👩‍👧 Gia đình'],
+                verifiedBadges: [0, 1],
+                desc: 'GreenLife cam kết mang đến môi trường làm việc lành mạnh, cân bằng. 95% nhân viên hài lòng với chính sách làm việc linh hoạt.',
+                stats: { verified: '95%', turnover: '4%', enps: '+78', satisfy: '4.8/5' },
+                jobs: 8
+            },
+            edutech: {
+                name: 'EduTech Vietnam',
+                short: 'ET',
+                color: '#295892',
+                industry: 'Giáo dục',
+                location: 'Đà Nẵng',
+                badges: ['✓ Học hỏi', '✓ Phát triển', '💡 Innovation', '📈 Growth'],
+                verifiedBadges: [0, 1],
+                desc: 'EduTech Vietnam đầu tư mạnh vào phát triển nhân sự. Mỗi quý có 5 triệu hỗ trợ học tập, Tech Talk hàng tuần, mentorship program.',
+                stats: { verified: '89%', turnover: '7%', enps: '+65', satisfy: '4.6/5' },
+                jobs: 4
+            },
+            finpro: {
+                name: 'FinPro Vietnam',
+                short: 'FP',
+                color: '#295892',
+                industry: 'Tài chính',
+                location: 'TP. Hồ Chí Minh',
+                badges: ['✓ Feedback văn hóa', '✓ Leadership tốt', '💬 Open communication', '🎯 Clear goals'],
+                verifiedBadges: [0, 1],
+                desc: 'FinPro Vietnam xây dựng văn hóa feedback mở và thẳng thắn. Manager 1:1 hàng tuần, tất cả quyết định đều minh bạch.',
+                stats: { verified: '91%', turnover: '6%', enps: '+68', satisfy: '4.6/5' },
+                jobs: 6
+            }
+        };
+
+        // ==================== DOM ELEMENTS ====================
+        const header = document.getElementById('header');
+        const filterBar = document.getElementById('filterBar');
+        const feedScroll = document.getElementById('feedScroll');
+        const posts = document.querySelectorAll('.post-card');
+        const progressDots = document.querySelectorAll('.progress-dot');
+        const scrollIndicator = document.getElementById('scrollIndicator');
+        const bottomSheetOverlay = document.getElementById('bottomSheetOverlay');
+        const bottomSheet = document.getElementById('bottomSheet');
+
+        // ==================== SCROLL HANDLING ====================
+        let lastScrollY = 0;
+        let currentPostIndex = 0;
+
+        feedScroll.addEventListener('scroll', () => {
+            const scrollY = feedScroll.scrollTop;
+            const postHeight = feedScroll.querySelector('.post-card').offsetHeight + 24;
+            
+            // Calculate current post
+            const newIndex = Math.round(scrollY / postHeight);
+            if (newIndex !== currentPostIndex && newIndex >= 0 && newIndex < posts.length) {
+                currentPostIndex = newIndex;
+                updateProgressDots();
+                updateSnapshot();
+            }
+
+            // Hide scroll indicator after first scroll
+            if (scrollY > 50) {
+                scrollIndicator.classList.remove('visible');
+            }
+
+            // Header hide/show on scroll
+            if (scrollY > lastScrollY && scrollY > 100) {
+                header.classList.add('hidden');
+                filterBar.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+                filterBar.classList.remove('hidden');
+            }
+            lastScrollY = scrollY;
+        });
+
+        // ==================== PROGRESS DOTS ====================
+        function updateProgressDots() {
+            progressDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentPostIndex);
+            });
+        }
+
+        progressDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.dataset.index);
+                const postHeight = feedScroll.querySelector('.post-card').offsetHeight + 24;
+                feedScroll.scrollTo({
+                    top: index * postHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // ==================== SNAPSHOT UPDATE ====================
+        function updateSnapshot() {
+            const post = posts[currentPostIndex];
+            const companyKey = post.dataset.company;
+            const company = companyData[companyKey];
+
+            if (!company) return;
+
+            document.getElementById('snapshotLogo').textContent = company.short;
+            document.getElementById('snapshotLogo').style.background = company.color;
+            document.getElementById('snapshotLogo').style.color = 'white';
+            document.getElementById('snapshotName').innerHTML = `
+                ${company.name}
+                <span class="verified-badge">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </span>
+            `;
+            document.getElementById('snapshotMeta').textContent = `${company.industry} · ${company.location}`;
+            document.getElementById('snapshotDesc').textContent = company.desc;
+            
+            // Update badges
+            const badgesHtml = company.badges.map((badge, i) => {
+                const isVerified = company.verifiedBadges.includes(i);
+                return `<span class="culture-badge ${isVerified ? 'verified' : ''}">${badge}</span>`;
+            }).join('');
+            document.getElementById('snapshotBadges').innerHTML = badgesHtml;
+
+            // Update stats
+            document.getElementById('statVerified').textContent = company.stats.verified;
+            document.getElementById('statTurnover').textContent = company.stats.turnover;
+            document.getElementById('stateNPS').textContent = company.stats.enps;
+            document.getElementById('statSatisfy').textContent = company.stats.satisfy;
+
+            // Update job button
+            document.querySelector('.btn-secondary').innerHTML = `
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+                Xem ${company.jobs} vị trí đang tuyển
+            `;
+        }
+
+        // ==================== ACTION BUTTONS ====================
+        function toggleLike(btn) {
+            btn.classList.toggle('liked');
+            const icon = btn.querySelector('svg');
+            if (btn.classList.contains('liked')) {
+                icon.setAttribute('fill', 'white');
+            } else {
+                icon.setAttribute('fill', 'none');
+            }
+        }
+
+        function toggleSave(btn) {
+            btn.classList.toggle('saved');
+            const icon = btn.querySelector('svg');
+            const span = btn.querySelector('span');
+            if (btn.classList.contains('saved')) {
+                icon.setAttribute('fill', 'white');
+                span.textContent = 'Đã lưu';
+            } else {
+                icon.setAttribute('fill', 'none');
+                span.textContent = 'Lưu';
+            }
+        }
+
+        // ==================== HASHTAG FILTERS ====================
+        document.querySelectorAll('.hashtag-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.hashtag-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                // In real app: filter posts by hashtag
+            });
+        });
+
+        // ==================== MOBILE BOTTOM SHEET ====================
+        function openBottomSheet(companyKey) {
+            const company = companyData[companyKey];
+            if (!company) return;
+
+            document.querySelector('.bottom-sheet-content').innerHTML = `
+                <div class="snapshot-company" style="margin-bottom: 16px;">
+                    <div class="snapshot-logo" style="background: ${company.color}; color: white;">${company.short}</div>
+                    <div class="snapshot-company-info">
+                        <h3>${company.name}</h3>
+                        <p>${company.industry} · ${company.location}</p>
+                    </div>
+                </div>
+                <div class="snapshot-badges" style="margin-bottom: 16px;">
+                    ${company.badges.map((badge, i) => 
+                        `<span class="culture-badge ${company.verifiedBadges.includes(i) ? 'verified' : ''}">${badge}</span>`
+                    ).join('')}
+                </div>
+                <p class="snapshot-desc">${company.desc}</p>
+                <div class="snapshot-stats" style="margin: 16px 0;">
+                    <div class="stat-item">
+                        <div class="stat-value">${company.stats.verified}</div>
+                        <div class="stat-label">Xác thực tổng</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${company.stats.turnover}</div>
+                        <div class="stat-label">Nghỉ việc/năm</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${company.stats.enps}</div>
+                        <div class="stat-label">eNPS Score</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${company.stats.satisfy}</div>
+                        <div class="stat-label">Hài lòng</div>
+                    </div>
+                </div>
+                <button class="btn-primary" style="width: 100%; margin-bottom: 10px;">Xem profile đầy đủ</button>
+                <button class="btn-secondary" style="width: 100%;">Xem ${company.jobs} vị trí đang tuyển</button>
+            `;
+
+            bottomSheetOverlay.classList.add('active');
+            bottomSheet.classList.add('active');
+        }
+
+        function closeBottomSheet() {
+            bottomSheetOverlay.classList.remove('active');
+            bottomSheet.classList.remove('active');
+        }
+
+        bottomSheetOverlay.addEventListener('click', closeBottomSheet);
+
+        // Mobile: Click company avatar to open sheet
+        if (window.innerWidth <= 1024) {
+            document.querySelectorAll('.company-avatar, .company-name').forEach(el => {
+                el.style.cursor = 'pointer';
+                el.addEventListener('click', (e) => {
+                    const post = e.target.closest('.post-card');
+                    if (post) {
+                        openBottomSheet(post.dataset.company);
+                    }
+                });
+            });
+        }
+
+        // ==================== SOUND TOGGLE ====================
+        document.querySelectorAll('.sound-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const isMuted = btn.querySelector('line');
+                if (isMuted) {
+                    btn.innerHTML = `
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                        </svg>
+                    `;
+                } else {
+                    btn.innerHTML = `
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                            <line x1="23" y1="9" x2="17" y2="15"/>
+                            <line x1="17" y1="9" x2="23" y2="15"/>
+                        </svg>
+                    `;
+                }
+            });
+        });
+
+        // ==================== KEYBOARD NAVIGATION ====================
+        document.addEventListener('keydown', (e) => {
+            const postHeight = feedScroll.querySelector('.post-card').offsetHeight + 24;
+            
+            if (e.key === 'ArrowDown' || e.key === 'j') {
+                e.preventDefault();
+                feedScroll.scrollBy({ top: postHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'k') {
+                e.preventDefault();
+                feedScroll.scrollBy({ top: -postHeight, behavior: 'smooth' });
+            }
+        });
+
+        // ==================== INIT ====================
+        updateSnapshot();
+    </script>
+</body>
+</html>
