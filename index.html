@@ -10,25 +10,25 @@
     <style>
         :root {
             /* JoyWork Brand Colors - Mã màu nhận diện chính thức */
-            --primary: #295892;          /* Xanh dương chủ đạo RGB(41, 88, 146) */
-            --primary-dark: #1e4270;     /* Xanh đậm hơn */
-            --primary-light: #e8eef5;    /* Xanh nhạt background */
-            --primary-lighter: #f0f5fa;  /* Xanh rất nhạt */
+            --primary: #295892;          /* Xanh dương RGB(41, 88, 146) */
+            --primary-dark: #1e4270;
+            --primary-light: #e8eef5;
+            --primary-lighter: #f0f5fa;
             --accent: #BC2153;           /* Hồng/Magenta RGB(188, 33, 83) */
-            --accent-light: #fce8ef;     /* Hồng nhạt background */
-            --accent-dark: #9a1a44;      /* Hồng đậm */
-            --neutral: #414B53;          /* Xám đậm RGB(65, 75, 83) */
-            --text-primary: #1a1a2e;     /* Text chính */
-            --text-secondary: #414B53;   /* Text phụ - dùng neutral */
-            --text-muted: #7a8490;       /* Text mờ */
+            --accent-light: #fce8ef;
+            --accent-dark: #9a1a44;
+            --neutral: #414B53;          /* Xám RGB(65, 75, 83) */
+            --text-primary: #1a1a2e;
+            --text-secondary: #414B53;
+            --text-muted: #7a8490;
             --bg-white: #ffffff;
             --bg-light: #f8f9fb;
             --bg-gray: #f0f2f5;
             --border-light: #e2e6eb;
             --border-medium: #ccd2d9;
             --shadow-sm: 0 1px 2px rgba(41,88,146,0.06);
-            --shadow-md: 0 4px 6px -1px rgba(41,88,146,0.1), 0 2px 4px -1px rgba(41,88,146,0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(41,88,146,0.1), 0 4px 6px -2px rgba(41,88,146,0.05);
+            --shadow-md: 0 4px 12px rgba(41,88,146,0.1);
+            --shadow-lg: 0 8px 24px rgba(41,88,146,0.12);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
@@ -59,8 +59,8 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 64px;
-            background: rgba(255,255,255,0.95);
+            height: 60px;
+            background: rgba(255,255,255,0.98);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-light);
             z-index: 1000;
@@ -84,46 +84,41 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--primary);
+            font-size: 1.4rem;
             text-decoration: none;
         }
 
-        .logo-icon {
-            width: 36px;
-            height: 36px;
+        .logo-text {
             background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
             position: relative;
         }
 
-        .logo-icon::after {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            position: absolute;
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
         }
 
         .search-box {
             position: relative;
-            width: 320px;
+            width: 300px;
         }
 
         .search-box input {
             width: 100%;
-            padding: 10px 16px 10px 44px;
+            padding: 10px 16px 10px 42px;
             border: 1px solid var(--border-light);
             border-radius: 100px;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             background: var(--bg-gray);
             transition: all 0.2s;
         }
@@ -137,7 +132,7 @@
 
         .search-box svg {
             position: absolute;
-            left: 16px;
+            left: 14px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-muted);
@@ -145,7 +140,7 @@
 
         .nav-menu {
             display: flex;
-            gap: 8px;
+            gap: 4px;
         }
 
         .nav-link {
@@ -153,7 +148,7 @@
             text-decoration: none;
             color: var(--text-secondary);
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             border-radius: var(--radius-sm);
             transition: all 0.2s;
         }
@@ -164,19 +159,19 @@
         }
 
         .nav-link.active {
-            background: var(--primary-light);
-            color: var(--primary-dark);
+            background: var(--primary);
+            color: white;
         }
 
         /* ==================== FILTER BAR ==================== */
         .filter-bar {
             position: fixed;
-            top: 64px;
+            top: 60px;
             left: 0;
             right: 0;
             background: white;
             border-bottom: 1px solid var(--border-light);
-            padding: 12px 24px;
+            padding: 10px 24px;
             z-index: 999;
             transition: transform 0.3s ease;
         }
@@ -190,7 +185,7 @@
             margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
             overflow-x: auto;
             scrollbar-width: none;
         }
@@ -203,10 +198,11 @@
             padding: 8px 32px 8px 12px;
             border: 1px solid var(--border-light);
             border-radius: var(--radius-sm);
-            font-size: 0.85rem;
-            background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
+            font-size: 0.8rem;
+            background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23414B53' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
             cursor: pointer;
-            min-width: 140px;
+            min-width: 130px;
+            color: var(--text-secondary);
         }
 
         .filter-select:focus {
@@ -221,10 +217,11 @@
             padding: 8px 12px;
             border: 1px solid var(--border-light);
             border-radius: var(--radius-sm);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             background: white;
             cursor: pointer;
             white-space: nowrap;
+            color: var(--text-secondary);
         }
 
         .filter-toggle input {
@@ -242,11 +239,12 @@
             background: var(--bg-gray);
             border: none;
             border-radius: 100px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-secondary);
             cursor: pointer;
             transition: all 0.2s;
             white-space: nowrap;
+            font-weight: 500;
         }
 
         .hashtag-pill:hover {
@@ -262,28 +260,29 @@
         /* ==================== MAIN LAYOUT ==================== */
         .main-container {
             display: flex;
-            max-width: 1400px;
+            justify-content: center;
+            gap: 32px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding-top: 120px;
+            padding: 116px 24px 24px;
             min-height: 100vh;
         }
 
         /* ==================== FEED CONTAINER ==================== */
         .feed-container {
-            flex: 1;
             display: flex;
             justify-content: center;
-            padding: 24px;
-            max-width: 900px;
+            align-items: flex-start;
         }
 
         .feed-scroll {
-            width: 100%;
-            max-width: 480px;
-            height: calc(100vh - 168px);
+            width: 380px;
+            height: calc(100vh - 140px);
+            max-height: 720px;
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
             scrollbar-width: none;
+            border-radius: var(--radius-lg);
         }
 
         .feed-scroll::-webkit-scrollbar {
@@ -293,12 +292,13 @@
         /* ==================== POST CARD ==================== */
         .post-card {
             scroll-snap-align: start;
-            height: calc(100vh - 200px);
-            min-height: 600px;
+            width: 380px;
+            height: calc(100vh - 140px);
+            max-height: 720px;
             background: var(--bg-white);
             border-radius: var(--radius-lg);
             overflow: hidden;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             box-shadow: var(--shadow-lg);
             display: flex;
             flex-direction: column;
@@ -309,7 +309,7 @@
             position: relative;
             flex: 1;
             min-height: 0;
-            background: #1a1a1a;
+            background: linear-gradient(135deg, var(--neutral) 0%, #2a3540 100%);
             overflow: hidden;
         }
 
@@ -327,20 +327,20 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
             color: white;
         }
 
         .placeholder-media .play-icon {
-            width: 80px;
-            height: 80px;
+            width: 72px;
+            height: 72px;
             background: rgba(255,255,255,0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .placeholder-media .play-icon svg {
@@ -348,18 +348,18 @@
         }
 
         .placeholder-media p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: rgba(255,255,255,0.7);
         }
 
         /* Sound toggle */
         .sound-toggle {
             position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 40px;
-            height: 40px;
-            background: rgba(0,0,0,0.5);
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            background: rgba(0,0,0,0.4);
             border: none;
             border-radius: 50%;
             color: white;
@@ -372,7 +372,7 @@
         }
 
         .sound-toggle:hover {
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.6);
             transform: scale(1.05);
         }
 
@@ -381,9 +381,9 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            right: 0;
-            padding: 80px 16px 16px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            right: 60px;
+            padding: 60px 14px 14px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
             color: white;
         }
 
@@ -391,12 +391,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .company-avatar {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: var(--radius-sm);
             background: white;
             display: flex;
@@ -404,32 +404,33 @@
             justify-content: center;
             font-weight: 700;
             color: var(--primary);
-            font-size: 0.9rem;
-            border: 2px solid rgba(255,255,255,0.3);
+            font-size: 0.75rem;
+            flex-shrink: 0;
         }
 
         .company-name {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
         .verified-badge {
-            width: 18px;
-            height: 18px;
-            background: var(--accent);
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .post-caption {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             line-height: 1.5;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -443,30 +444,26 @@
         }
 
         .post-hashtag {
-            font-size: 0.8rem;
-            color: #a8c5e8;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.85);
             font-weight: 500;
-        }
-
-        .post-hashtag:hover {
-            color: white;
         }
 
         /* ==================== ACTION BAR ==================== */
         .action-bar {
             position: absolute;
-            right: 12px;
-            bottom: 120px;
+            right: 8px;
+            bottom: 80px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
         }
 
         .action-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
             background: none;
             border: none;
             color: white;
@@ -479,8 +476,8 @@
         }
 
         .action-btn .icon-wrap {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             background: rgba(255,255,255,0.15);
             border-radius: 50%;
             display: flex;
@@ -503,7 +500,7 @@
         }
 
         .action-btn span {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 500;
         }
 
@@ -513,7 +510,7 @@
 
         /* ==================== TRUST LAYER ==================== */
         .trust-layer {
-            padding: 12px 16px;
+            padding: 10px 12px;
             background: var(--bg-white);
             border-top: 1px solid var(--border-light);
         }
@@ -522,17 +519,16 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 10px 14px;
+            padding: 10px 12px;
             background: var(--primary-light);
             border-radius: var(--radius-sm);
-            font-size: 0.85rem;
-            border: 1px solid rgba(41,88,146,0.1);
+            font-size: 0.8rem;
         }
 
         .trust-badge .check-icon {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            width: 22px;
+            height: 22px;
+            background: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -546,6 +542,7 @@
 
         .trust-text {
             flex: 1;
+            line-height: 1.4;
         }
 
         .trust-text strong {
@@ -553,20 +550,15 @@
         }
 
         .trust-meta {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
             margin-top: 2px;
         }
 
         /* ==================== COMPANY SNAPSHOT PANEL ==================== */
         .snapshot-panel {
-            width: 380px;
-            padding: 24px;
-            position: sticky;
-            top: 144px;
-            height: fit-content;
-            max-height: calc(100vh - 168px);
-            overflow-y: auto;
+            width: 340px;
+            flex-shrink: 0;
         }
 
         .snapshot-card {
@@ -574,122 +566,123 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             overflow: hidden;
+            position: sticky;
+            top: 116px;
         }
 
         .snapshot-header {
-            padding: 24px;
+            padding: 20px;
             border-bottom: 1px solid var(--border-light);
         }
 
         .snapshot-company {
             display: flex;
             align-items: center;
-            gap: 14px;
-            margin-bottom: 16px;
+            gap: 12px;
+            margin-bottom: 14px;
         }
 
         .snapshot-logo {
-            width: 56px;
-            height: 56px;
+            width: 48px;
+            height: 48px;
             border-radius: var(--radius-md);
-            background: var(--primary);
+            background: var(--primary-light);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.2rem;
-            color: white;
+            font-size: 1rem;
+            color: var(--primary);
         }
 
         .snapshot-company-info h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
         .snapshot-company-info p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
         }
 
         .snapshot-badges {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
 
         .culture-badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
+            gap: 4px;
+            padding: 5px 10px;
             background: var(--bg-gray);
             border-radius: 100px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: var(--text-secondary);
         }
 
         .culture-badge.verified {
             background: var(--primary-light);
             color: var(--primary);
-            border: 1px solid rgba(41,88,146,0.2);
         }
 
         .snapshot-body {
-            padding: 20px 24px;
+            padding: 16px 20px;
         }
 
         .snapshot-desc {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             line-height: 1.6;
         }
 
         .snapshot-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-bottom: 16px;
         }
 
         .stat-item {
-            padding: 12px;
+            padding: 10px;
             background: var(--bg-gray);
             border-radius: var(--radius-sm);
             text-align: center;
         }
 
         .stat-value {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--primary);
         }
 
         .stat-label {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             color: var(--text-muted);
             margin-top: 2px;
         }
 
         .snapshot-recent {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .snapshot-recent h4 {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: var(--text-secondary);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .recent-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+            gap: 6px;
         }
 
         .recent-thumb {
@@ -702,8 +695,8 @@
         }
 
         .recent-thumb:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-md);
+            transform: scale(1.03);
+            box-shadow: var(--shadow-sm);
         }
 
         .recent-thumb img {
@@ -715,8 +708,8 @@
         .snapshot-actions {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            padding: 0 24px 24px;
+            gap: 8px;
+            padding: 0 20px 20px;
         }
 
         .btn-primary {
@@ -724,12 +717,12 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px 24px;
+            padding: 11px 20px;
             background: var(--primary);
             color: white;
             border: none;
             border-radius: var(--radius-sm);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
@@ -746,12 +739,12 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px 24px;
+            padding: 11px 20px;
             background: white;
             color: var(--text-primary);
             border: 1px solid var(--border-medium);
             border-radius: var(--radius-sm);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
@@ -762,66 +755,62 @@
             border-color: var(--text-muted);
         }
 
-        /* ==================== LOADING STATE ==================== */
-        .skeleton {
-            background: linear-gradient(90deg, var(--bg-gray) 25%, var(--bg-light) 50%, var(--bg-gray) 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: var(--radius-sm);
+        /* ==================== PROGRESS DOTS ==================== */
+        .progress-dots {
+            position: fixed;
+            left: calc(50% - 230px);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
         }
 
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+        .progress-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--border-medium);
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
-        .skeleton-post {
-            height: calc(100vh - 200px);
-            min-height: 600px;
-            border-radius: var(--radius-lg);
-            margin-bottom: 24px;
+        .progress-dot:hover {
+            background: var(--text-muted);
         }
 
-        /* ==================== EMPTY STATE ==================== */
-        .empty-state {
+        .progress-dot.active {
+            background: var(--primary);
+            transform: scale(1.4);
+        }
+
+        /* ==================== SCROLL INDICATOR ==================== */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: calc(100vh - 200px);
-            text-align: center;
-            padding: 40px;
+            gap: 6px;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            animation: bounce 2s infinite;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
-        .empty-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--bg-gray);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
+        .scroll-indicator.visible {
+            opacity: 1;
         }
 
-        .empty-state h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .empty-state p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .empty-suggestions {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            justify-content: center;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-6px); }
+            60% { transform: translateX(-50%) translateY(-3px); }
         }
 
         /* ==================== MOBILE STYLES ==================== */
@@ -830,17 +819,20 @@
                 display: none;
             }
 
-            .feed-container {
-                max-width: 100%;
-                padding: 16px;
+            .main-container {
+                padding: 116px 16px 16px;
             }
 
-            .feed-scroll {
-                max-width: 520px;
+            .progress-dots {
+                left: 16px;
             }
         }
 
         @media (max-width: 768px) {
+            .header {
+                height: 56px;
+            }
+
             .header-inner {
                 padding: 0 16px;
             }
@@ -850,61 +842,61 @@
             }
 
             .nav-menu {
-                gap: 4px;
+                gap: 2px;
             }
 
             .nav-link {
-                padding: 8px 12px;
-                font-size: 0.85rem;
+                padding: 6px 10px;
+                font-size: 0.8rem;
             }
 
             .filter-bar {
-                padding: 10px 16px;
+                top: 56px;
+                padding: 8px 16px;
             }
 
             .filter-select {
-                min-width: 120px;
-                font-size: 0.8rem;
+                min-width: 110px;
+                font-size: 0.75rem;
             }
 
             .main-container {
-                padding-top: 110px;
-            }
-
-            .feed-container {
-                padding: 12px;
+                padding: 108px 0 0;
             }
 
             .feed-scroll {
+                width: 100%;
                 max-width: 100%;
-                height: calc(100vh - 134px);
+                height: calc(100vh - 108px);
+                max-height: none;
+                border-radius: 0;
             }
 
             .post-card {
-                height: calc(100vh - 160px);
-                min-height: 500px;
-                border-radius: var(--radius-md);
-                margin-bottom: 16px;
+                width: 100%;
+                height: calc(100vh - 108px);
+                max-height: none;
+                border-radius: 0;
+                margin-bottom: 0;
             }
 
             .action-bar {
-                right: 8px;
-                bottom: 100px;
-                gap: 12px;
+                right: 10px;
+                bottom: 90px;
+                gap: 10px;
             }
 
             .action-btn .icon-wrap {
-                width: 40px;
-                height: 40px;
+                width: 44px;
+                height: 44px;
             }
 
             .trust-layer {
-                padding: 10px 12px;
+                padding: 8px 12px;
             }
 
-            .trust-badge {
-                padding: 8px 12px;
-                font-size: 0.8rem;
+            .progress-dots {
+                display: none;
             }
         }
 
@@ -943,75 +935,15 @@
         }
 
         .bottom-sheet-handle {
-            width: 40px;
+            width: 36px;
             height: 4px;
             background: var(--border-medium);
             border-radius: 2px;
-            margin: 12px auto;
+            margin: 10px auto;
         }
 
         .bottom-sheet-content {
             padding: 0 20px 24px;
-        }
-
-        /* ==================== SCROLL INDICATOR ==================== */
-        .scroll-indicator {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            animation: bounce 2s infinite;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .scroll-indicator.visible {
-            opacity: 1;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-8px); }
-            60% { transform: translateX(-50%) translateY(-4px); }
-        }
-
-        /* ==================== PROGRESS BAR ==================== */
-        .progress-dots {
-            position: fixed;
-            right: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            z-index: 100;
-        }
-
-        .progress-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--border-medium);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .progress-dot.active {
-            background: var(--accent);
-            transform: scale(1.3);
-        }
-
-        @media (max-width: 768px) {
-            .progress-dots {
-                right: 8px;
-            }
         }
     </style>
 </head>
@@ -1021,16 +953,18 @@
         <div class="header-inner">
             <a href="#" class="logo">
                 <div class="logo-icon">
-                    <svg width="24" height="24" viewBox="0 0 100 100" fill="none">
-                        <circle cx="50" cy="50" r="35" stroke="white" stroke-width="8" fill="none"/>
-                        <circle cx="50" cy="50" r="6" fill="#BC2153"/>
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 8h6v18c0 3.3-2.7 6-6 6V8z" fill="#295892"/>
+                        <circle cx="20" cy="20" r="8" fill="#295892"/>
+                        <circle cx="20" cy="20" r="3" fill="#BC2153"/>
+                        <path d="M26 8l6 12-6 12" stroke="#295892" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                     </svg>
                 </div>
-                <span style="color: #295892;">JOY</span><span style="color: #414B53;">Work</span>
+                <span class="logo-text">JoyWork</span>
             </a>
             
             <div class="search-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"/>
                     <path d="M21 21l-4.35-4.35"/>
                 </svg>
@@ -1055,7 +989,6 @@
                 <option value="finance">Tài chính</option>
                 <option value="education">Giáo dục</option>
                 <option value="healthcare">Y tế</option>
-                <option value="retail">Bán lẻ</option>
             </select>
             
             <select class="filter-select">
@@ -1076,7 +1009,6 @@
                 <button class="hashtag-pill">#FeedbackThang</button>
                 <button class="hashtag-pill">#KhongDocHai</button>
                 <button class="hashtag-pill">#HocHoi</button>
-                <button class="hashtag-pill">#CanBang</button>
             </div>
         </div>
     </div>
@@ -1090,16 +1022,16 @@
                 <!-- POST 1 -->
                 <article class="post-card" data-company="stv">
                     <div class="post-media">
-                        <div class="placeholder-media">
+                        <div class="placeholder-media" style="background: linear-gradient(135deg, #295892 0%, #1e4270 100%);">
                             <div class="play-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                                     <polygon points="5 3 19 12 5 21 5 3"/>
                                 </svg>
                             </div>
                             <p>Daily standup meeting</p>
                         </div>
                         <button class="sound-toggle" title="Bật/tắt âm thanh">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M11 5L6 9H2v6h4l5 4V5z"/>
                                 <line x1="23" y1="9" x2="17" y2="15"/>
                                 <line x1="17" y1="9" x2="23" y2="15"/>
@@ -1113,7 +1045,7 @@
                                 <div class="company-name">
                                     Sáng Tạo Việt
                                     <span class="verified-badge">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
                                             <polyline points="20 6 9 17 4 12"/>
                                         </svg>
                                     </span>
@@ -1131,7 +1063,7 @@
                         <div class="action-bar">
                             <button class="action-btn" onclick="toggleLike(this)">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                                     </svg>
                                 </div>
@@ -1139,7 +1071,7 @@
                             </button>
                             <button class="action-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                                     </svg>
                                 </div>
@@ -1147,7 +1079,7 @@
                             </button>
                             <button class="action-btn" onclick="toggleSave(this)">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
                                     </svg>
                                 </div>
@@ -1155,7 +1087,7 @@
                             </button>
                             <button class="action-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <circle cx="18" cy="5" r="3"/>
                                         <circle cx="6" cy="12" r="3"/>
                                         <circle cx="18" cy="19" r="3"/>
@@ -1167,7 +1099,7 @@
                             </button>
                             <button class="action-btn jobs-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                                     </svg>
@@ -1181,7 +1113,7 @@
                     <div class="trust-layer">
                         <div class="trust-badge">
                             <div class="check-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </div>
@@ -1196,16 +1128,16 @@
                 <!-- POST 2 -->
                 <article class="post-card" data-company="techvn">
                     <div class="post-media">
-                        <div class="placeholder-media" style="background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);">
+                        <div class="placeholder-media" style="background: linear-gradient(135deg, #BC2153 0%, #9a1a44 100%);">
                             <div class="play-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                                     <polygon points="5 3 19 12 5 21 5 3"/>
                                 </svg>
                             </div>
                             <p>Onboarding buddy session</p>
                         </div>
                         <button class="sound-toggle" title="Bật/tắt âm thanh">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M11 5L6 9H2v6h4l5 4V5z"/>
                                 <line x1="23" y1="9" x2="17" y2="15"/>
                                 <line x1="17" y1="9" x2="23" y2="15"/>
@@ -1214,11 +1146,11 @@
                         
                         <div class="post-overlay">
                             <div class="company-info">
-                                <div class="company-avatar" style="background: #295892; color: white;">TV</div>
+                                <div class="company-avatar" style="background: var(--accent); color: white;">TV</div>
                                 <div class="company-name">
                                     TechVN Solutions
                                     <span class="verified-badge">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
                                             <polyline points="20 6 9 17 4 12"/>
                                         </svg>
                                     </span>
@@ -1235,7 +1167,7 @@
                         <div class="action-bar">
                             <button class="action-btn" onclick="toggleLike(this)">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                                     </svg>
                                 </div>
@@ -1243,7 +1175,7 @@
                             </button>
                             <button class="action-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                                     </svg>
                                 </div>
@@ -1251,7 +1183,7 @@
                             </button>
                             <button class="action-btn" onclick="toggleSave(this)">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
                                     </svg>
                                 </div>
@@ -1259,7 +1191,7 @@
                             </button>
                             <button class="action-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <circle cx="18" cy="5" r="3"/>
                                         <circle cx="6" cy="12" r="3"/>
                                         <circle cx="18" cy="19" r="3"/>
@@ -1271,7 +1203,7 @@
                             </button>
                             <button class="action-btn jobs-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                                     </svg>
@@ -1284,7 +1216,7 @@
                     <div class="trust-layer">
                         <div class="trust-badge">
                             <div class="check-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </div>
@@ -1299,16 +1231,16 @@
                 <!-- POST 3 -->
                 <article class="post-card" data-company="greenlife">
                     <div class="post-media">
-                        <div class="placeholder-media" style="background: linear-gradient(135deg, #065f46 0%, #064e3b 100%);">
+                        <div class="placeholder-media" style="background: linear-gradient(135deg, #414B53 0%, #2d343a 100%);">
                             <div class="play-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                                     <polygon points="5 3 19 12 5 21 5 3"/>
                                 </svg>
                             </div>
                             <p>Team lunch Friday</p>
                         </div>
                         <button class="sound-toggle" title="Bật/tắt âm thanh">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M11 5L6 9H2v6h4l5 4V5z"/>
                                 <line x1="23" y1="9" x2="17" y2="15"/>
                                 <line x1="17" y1="9" x2="23" y2="15"/>
@@ -1317,11 +1249,11 @@
                         
                         <div class="post-overlay">
                             <div class="company-info">
-                                <div class="company-avatar" style="background: #295892; color: white;">GL</div>
+                                <div class="company-avatar" style="background: var(--neutral); color: white;">GL</div>
                                 <div class="company-name">
                                     GreenLife Corp
                                     <span class="verified-badge">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
                                             <polyline points="20 6 9 17 4 12"/>
                                         </svg>
                                     </span>
@@ -1338,7 +1270,7 @@
                         <div class="action-bar">
                             <button class="action-btn liked" onclick="toggleLike(this)">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2">
                                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                                     </svg>
                                 </div>
@@ -1346,7 +1278,7 @@
                             </button>
                             <button class="action-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                                     </svg>
                                 </div>
@@ -1354,7 +1286,7 @@
                             </button>
                             <button class="action-btn saved" onclick="toggleSave(this)">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2">
                                         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
                                     </svg>
                                 </div>
@@ -1362,7 +1294,7 @@
                             </button>
                             <button class="action-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <circle cx="18" cy="5" r="3"/>
                                         <circle cx="6" cy="12" r="3"/>
                                         <circle cx="18" cy="19" r="3"/>
@@ -1374,7 +1306,7 @@
                             </button>
                             <button class="action-btn jobs-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                                     </svg>
@@ -1387,7 +1319,7 @@
                     <div class="trust-layer">
                         <div class="trust-badge">
                             <div class="check-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </div>
@@ -1402,16 +1334,16 @@
                 <!-- POST 4 -->
                 <article class="post-card" data-company="edutech">
                     <div class="post-media">
-                        <div class="placeholder-media" style="background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);">
+                        <div class="placeholder-media" style="background: linear-gradient(135deg, #295892 30%, #BC2153 100%);">
                             <div class="play-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                                     <polygon points="5 3 19 12 5 21 5 3"/>
                                 </svg>
                             </div>
                             <p>Knowledge sharing session</p>
                         </div>
                         <button class="sound-toggle" title="Bật/tắt âm thanh">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M11 5L6 9H2v6h4l5 4V5z"/>
                                 <line x1="23" y1="9" x2="17" y2="15"/>
                                 <line x1="17" y1="9" x2="23" y2="15"/>
@@ -1420,11 +1352,11 @@
                         
                         <div class="post-overlay">
                             <div class="company-info">
-                                <div class="company-avatar" style="background: #295892; color: white;">ET</div>
+                                <div class="company-avatar" style="background: linear-gradient(135deg, var(--primary), var(--accent)); color: white;">ET</div>
                                 <div class="company-name">
                                     EduTech Vietnam
                                     <span class="verified-badge">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
                                             <polyline points="20 6 9 17 4 12"/>
                                         </svg>
                                     </span>
@@ -1441,7 +1373,7 @@
                         <div class="action-bar">
                             <button class="action-btn" onclick="toggleLike(this)">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                                     </svg>
                                 </div>
@@ -1449,7 +1381,7 @@
                             </button>
                             <button class="action-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                                     </svg>
                                 </div>
@@ -1457,7 +1389,7 @@
                             </button>
                             <button class="action-btn" onclick="toggleSave(this)">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
                                     </svg>
                                 </div>
@@ -1465,7 +1397,7 @@
                             </button>
                             <button class="action-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <circle cx="18" cy="5" r="3"/>
                                         <circle cx="6" cy="12" r="3"/>
                                         <circle cx="18" cy="19" r="3"/>
@@ -1477,7 +1409,7 @@
                             </button>
                             <button class="action-btn jobs-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                                     </svg>
@@ -1490,7 +1422,7 @@
                     <div class="trust-layer">
                         <div class="trust-badge">
                             <div class="check-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </div>
@@ -1505,16 +1437,16 @@
                 <!-- POST 5 -->
                 <article class="post-card" data-company="finpro">
                     <div class="post-media">
-                        <div class="placeholder-media" style="background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);">
+                        <div class="placeholder-media" style="background: linear-gradient(135deg, #1e4270 0%, #295892 50%, #414B53 100%);">
                             <div class="play-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                                     <polygon points="5 3 19 12 5 21 5 3"/>
                                 </svg>
                             </div>
                             <p>1:1 feedback session</p>
                         </div>
                         <button class="sound-toggle" title="Bật/tắt âm thanh">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M11 5L6 9H2v6h4l5 4V5z"/>
                                 <line x1="23" y1="9" x2="17" y2="15"/>
                                 <line x1="17" y1="9" x2="23" y2="15"/>
@@ -1523,11 +1455,11 @@
                         
                         <div class="post-overlay">
                             <div class="company-info">
-                                <div class="company-avatar" style="background: #295892; color: white;">FP</div>
+                                <div class="company-avatar" style="background: var(--primary-dark); color: white;">FP</div>
                                 <div class="company-name">
                                     FinPro Vietnam
                                     <span class="verified-badge">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
                                             <polyline points="20 6 9 17 4 12"/>
                                         </svg>
                                     </span>
@@ -1544,7 +1476,7 @@
                         <div class="action-bar">
                             <button class="action-btn" onclick="toggleLike(this)">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                                     </svg>
                                 </div>
@@ -1552,7 +1484,7 @@
                             </button>
                             <button class="action-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                                     </svg>
                                 </div>
@@ -1560,7 +1492,7 @@
                             </button>
                             <button class="action-btn" onclick="toggleSave(this)">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
                                     </svg>
                                 </div>
@@ -1568,7 +1500,7 @@
                             </button>
                             <button class="action-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <circle cx="18" cy="5" r="3"/>
                                         <circle cx="6" cy="12" r="3"/>
                                         <circle cx="18" cy="19" r="3"/>
@@ -1580,7 +1512,7 @@
                             </button>
                             <button class="action-btn jobs-btn">
                                 <div class="icon-wrap">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                                     </svg>
@@ -1593,7 +1525,7 @@
                     <div class="trust-layer">
                         <div class="trust-badge">
                             <div class="check-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </div>
@@ -1618,7 +1550,7 @@
                             <h3 id="snapshotName">
                                 Sáng Tạo Việt
                                 <span class="verified-badge">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
                                         <polyline points="20 6 9 17 4 12"/>
                                     </svg>
                                 </span>
@@ -1631,13 +1563,12 @@
                         <span class="culture-badge verified">✓ Feedback thẳng</span>
                         <span class="culture-badge">🎯 Tự chủ</span>
                         <span class="culture-badge">📚 Học hỏi</span>
-                        <span class="culture-badge">⚖️ Cân bằng</span>
                     </div>
                 </div>
                 
                 <div class="snapshot-body">
                     <p class="snapshot-desc" id="snapshotDesc">
-                        Với hơn 200 nhân viên tâm huyết, chúng tôi đang phục vụ hơn 5,000 doanh nghiệp trên toàn quốc, giúp họ chuyển đổi số và phát triển bền vững.
+                        Với hơn 200 nhân viên tâm huyết, chúng tôi đang phục vụ hơn 5,000 doanh nghiệp trên toàn quốc.
                     </p>
                     
                     <div class="snapshot-stats">
@@ -1662,16 +1593,16 @@
                     <div class="snapshot-recent">
                         <h4>Khoảnh khắc gần đây</h4>
                         <div class="recent-grid">
-                            <div class="recent-thumb" style="background: linear-gradient(135deg, #374151, #1f2937);"></div>
-                            <div class="recent-thumb" style="background: linear-gradient(135deg, #4b5563, #374151);"></div>
-                            <div class="recent-thumb" style="background: linear-gradient(135deg, #6b7280, #4b5563);"></div>
+                            <div class="recent-thumb" style="background: linear-gradient(135deg, #295892, #1e4270);"></div>
+                            <div class="recent-thumb" style="background: linear-gradient(135deg, #414B53, #2d343a);"></div>
+                            <div class="recent-thumb" style="background: linear-gradient(135deg, #BC2153, #9a1a44);"></div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="snapshot-actions">
                     <button class="btn-primary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                             <polyline points="15 3 21 3 21 9"/>
                             <line x1="10" y1="14" x2="21" y2="3"/>
@@ -1679,7 +1610,7 @@
                         Xem profile đầy đủ
                     </button>
                     <button class="btn-secondary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                             <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                         </svg>
@@ -1701,7 +1632,7 @@
 
     <!-- SCROLL INDICATOR -->
     <div class="scroll-indicator visible" id="scrollIndicator">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 5v14M19 12l-7 7-7-7"/>
         </svg>
         <span>Lướt để khám phá</span>
@@ -1711,9 +1642,7 @@
     <div class="bottom-sheet-overlay" id="bottomSheetOverlay"></div>
     <div class="bottom-sheet" id="bottomSheet">
         <div class="bottom-sheet-handle"></div>
-        <div class="bottom-sheet-content">
-            <!-- Content will be dynamically inserted -->
-        </div>
+        <div class="bottom-sheet-content"></div>
     </div>
 
     <script>
@@ -1725,33 +1654,33 @@
                 color: '#295892',
                 industry: 'Công nghệ',
                 location: 'TP. Hồ Chí Minh',
-                badges: ['✓ Minh bạch', '✓ Feedback thẳng', '🎯 Tự chủ', '📚 Học hỏi', '⚖️ Cân bằng'],
+                badges: ['✓ Minh bạch', '✓ Feedback thẳng', '🎯 Tự chủ', '📚 Học hỏi'],
                 verifiedBadges: [0, 1],
-                desc: 'Với hơn 200 nhân viên tâm huyết, chúng tôi đang phục vụ hơn 5,000 doanh nghiệp trên toàn quốc, giúp họ chuyển đổi số và phát triển bền vững.',
+                desc: 'Với hơn 200 nhân viên tâm huyết, chúng tôi đang phục vụ hơn 5,000 doanh nghiệp trên toàn quốc.',
                 stats: { verified: '87%', turnover: '8%', enps: '+62', satisfy: '4.5/5' },
                 jobs: 5
             },
             techvn: {
                 name: 'TechVN Solutions',
                 short: 'TV',
-                color: '#295892',
+                color: '#BC2153',
                 industry: 'Công nghệ',
                 location: 'Hà Nội',
                 badges: ['✓ Hỗ trợ người mới', '✓ Onboarding tốt', '🚀 Growth', '🤝 Teamwork'],
                 verifiedBadges: [0, 1],
-                desc: 'TechVN Solutions là startup công nghệ với sứ mệnh giúp doanh nghiệp Việt số hóa quy trình. Đội ngũ trẻ, năng động, luôn hỗ trợ nhau.',
+                desc: 'TechVN Solutions là startup công nghệ với sứ mệnh giúp doanh nghiệp Việt số hóa quy trình.',
                 stats: { verified: '92%', turnover: '5%', enps: '+71', satisfy: '4.7/5' },
                 jobs: 3
             },
             greenlife: {
                 name: 'GreenLife Corp',
                 short: 'GL',
-                color: '#295892',
+                color: '#414B53',
                 industry: 'Thực phẩm & Đồ uống',
                 location: 'TP. Hồ Chí Minh',
                 badges: ['✓ Work-life balance', '✓ Không toxic', '🌿 Healthy', '👨‍👩‍👧 Gia đình'],
                 verifiedBadges: [0, 1],
-                desc: 'GreenLife cam kết mang đến môi trường làm việc lành mạnh, cân bằng. 95% nhân viên hài lòng với chính sách làm việc linh hoạt.',
+                desc: 'GreenLife cam kết mang đến môi trường làm việc lành mạnh, cân bằng.',
                 stats: { verified: '95%', turnover: '4%', enps: '+78', satisfy: '4.8/5' },
                 jobs: 8
             },
@@ -1763,19 +1692,19 @@
                 location: 'Đà Nẵng',
                 badges: ['✓ Học hỏi', '✓ Phát triển', '💡 Innovation', '📈 Growth'],
                 verifiedBadges: [0, 1],
-                desc: 'EduTech Vietnam đầu tư mạnh vào phát triển nhân sự. Mỗi quý có 5 triệu hỗ trợ học tập, Tech Talk hàng tuần, mentorship program.',
+                desc: 'EduTech Vietnam đầu tư mạnh vào phát triển nhân sự. Mỗi quý có 5 triệu hỗ trợ học tập.',
                 stats: { verified: '89%', turnover: '7%', enps: '+65', satisfy: '4.6/5' },
                 jobs: 4
             },
             finpro: {
                 name: 'FinPro Vietnam',
                 short: 'FP',
-                color: '#295892',
+                color: '#1e4270',
                 industry: 'Tài chính',
                 location: 'TP. Hồ Chí Minh',
-                badges: ['✓ Feedback văn hóa', '✓ Leadership tốt', '💬 Open communication', '🎯 Clear goals'],
+                badges: ['✓ Feedback văn hóa', '✓ Leadership tốt', '💬 Open', '🎯 Clear goals'],
                 verifiedBadges: [0, 1],
-                desc: 'FinPro Vietnam xây dựng văn hóa feedback mở và thẳng thắn. Manager 1:1 hàng tuần, tất cả quyết định đều minh bạch.',
+                desc: 'FinPro Vietnam xây dựng văn hóa feedback mở và thẳng thắn.',
                 stats: { verified: '91%', turnover: '6%', enps: '+68', satisfy: '4.6/5' },
                 jobs: 6
             }
@@ -1797,9 +1726,8 @@
 
         feedScroll.addEventListener('scroll', () => {
             const scrollY = feedScroll.scrollTop;
-            const postHeight = feedScroll.querySelector('.post-card').offsetHeight + 24;
+            const postHeight = feedScroll.querySelector('.post-card').offsetHeight + 16;
             
-            // Calculate current post
             const newIndex = Math.round(scrollY / postHeight);
             if (newIndex !== currentPostIndex && newIndex >= 0 && newIndex < posts.length) {
                 currentPostIndex = newIndex;
@@ -1807,12 +1735,10 @@
                 updateSnapshot();
             }
 
-            // Hide scroll indicator after first scroll
             if (scrollY > 50) {
                 scrollIndicator.classList.remove('visible');
             }
 
-            // Header hide/show on scroll
             if (scrollY > lastScrollY && scrollY > 100) {
                 header.classList.add('hidden');
                 filterBar.classList.add('hidden');
@@ -1833,7 +1759,7 @@
         progressDots.forEach(dot => {
             dot.addEventListener('click', () => {
                 const index = parseInt(dot.dataset.index);
-                const postHeight = feedScroll.querySelector('.post-card').offsetHeight + 24;
+                const postHeight = feedScroll.querySelector('.post-card').offsetHeight + 16;
                 feedScroll.scrollTo({
                     top: index * postHeight,
                     behavior: 'smooth'
@@ -1855,7 +1781,7 @@
             document.getElementById('snapshotName').innerHTML = `
                 ${company.name}
                 <span class="verified-badge">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
                         <polyline points="20 6 9 17 4 12"/>
                     </svg>
                 </span>
@@ -1863,22 +1789,19 @@
             document.getElementById('snapshotMeta').textContent = `${company.industry} · ${company.location}`;
             document.getElementById('snapshotDesc').textContent = company.desc;
             
-            // Update badges
             const badgesHtml = company.badges.map((badge, i) => {
                 const isVerified = company.verifiedBadges.includes(i);
                 return `<span class="culture-badge ${isVerified ? 'verified' : ''}">${badge}</span>`;
             }).join('');
             document.getElementById('snapshotBadges').innerHTML = badgesHtml;
 
-            // Update stats
             document.getElementById('statVerified').textContent = company.stats.verified;
             document.getElementById('statTurnover').textContent = company.stats.turnover;
             document.getElementById('stateNPS').textContent = company.stats.enps;
             document.getElementById('statSatisfy').textContent = company.stats.satisfy;
 
-            // Update job button
             document.querySelector('.btn-secondary').innerHTML = `
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                     <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                 </svg>
@@ -1915,7 +1838,6 @@
             pill.addEventListener('click', () => {
                 document.querySelectorAll('.hashtag-pill').forEach(p => p.classList.remove('active'));
                 pill.classList.add('active');
-                // In real app: filter posts by hashtag
             });
         });
 
@@ -1971,7 +1893,6 @@
 
         bottomSheetOverlay.addEventListener('click', closeBottomSheet);
 
-        // Mobile: Click company avatar to open sheet
         if (window.innerWidth <= 1024) {
             document.querySelectorAll('.company-avatar, .company-name').forEach(el => {
                 el.style.cursor = 'pointer';
@@ -1990,14 +1911,14 @@
                 const isMuted = btn.querySelector('line');
                 if (isMuted) {
                     btn.innerHTML = `
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M11 5L6 9H2v6h4l5 4V5z"/>
                             <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
                         </svg>
                     `;
                 } else {
                     btn.innerHTML = `
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M11 5L6 9H2v6h4l5 4V5z"/>
                             <line x1="23" y1="9" x2="17" y2="15"/>
                             <line x1="17" y1="9" x2="23" y2="15"/>
@@ -2009,7 +1930,7 @@
 
         // ==================== KEYBOARD NAVIGATION ====================
         document.addEventListener('keydown', (e) => {
-            const postHeight = feedScroll.querySelector('.post-card').offsetHeight + 24;
+            const postHeight = feedScroll.querySelector('.post-card').offsetHeight + 16;
             
             if (e.key === 'ArrowDown' || e.key === 'j') {
                 e.preventDefault();
